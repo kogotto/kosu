@@ -13,15 +13,10 @@ int main()
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed) {
+            if (machine.process(event) ==
+                            ks::Machine::Transition::Exit) {
                 window.close();
             }
-            if (event.type == sf::Event::KeyReleased &&
-                event.key.code == sf::Keyboard::Escape) {
-                window.close();
-            }
-
-            machine.process(event);
         }
 
         window.clear();

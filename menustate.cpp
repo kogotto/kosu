@@ -9,6 +9,14 @@ MenuState::MenuState():
 }
 
 MenuState::Transition MenuState::process(const sf::Event& event) {
+    if (event.type == sf::Event::Closed) {
+        return Transition::Exit;
+    }
+    if (event.type == sf::Event::KeyReleased &&
+        event.key.code == sf::Keyboard::Escape) {
+        return Transition::Exit;
+    }
+
     return Transition::Stay;
 }
 

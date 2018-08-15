@@ -12,8 +12,14 @@ namespace ks {
 
 class Machine {
 public:
+    enum class Transition {
+        Stay,
+        Exit
+    };
+
     Machine() = default;
-    void process(const sf::Event& event);
+
+    Transition process(const sf::Event& event);
     void drawOn(sf::RenderWindow& window) const;
 private:
     MenuState menu;
