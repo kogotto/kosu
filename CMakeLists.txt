@@ -2,7 +2,9 @@ cmake_minimum_required(VERSION 3.9)
 
 project(kosu)
 
-add_executable(kosu main.cpp)
+file(GLOB KOSU_SOURCES "*.cpp")
+
+add_executable(kosu ${KOSU_SOURCES})
 
 find_package(SFML 2.5 COMPONENTS graphics window system)
 

@@ -1,10 +1,12 @@
 #include <SFML/Graphics.hpp>
 
+#include "machine.hpp"
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+
+    ks::Machine machine;
 
     while (window.isOpen())
     {
@@ -18,10 +20,14 @@ int main()
                 event.key.code == sf::Keyboard::Escape) {
                 window.close();
             }
+
+            machine.process(event);
         }
 
         window.clear();
-        window.draw(shape);
+
+        machine.drawOn(window);
+
         window.display();
     }
 
