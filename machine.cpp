@@ -2,16 +2,12 @@
 
 namespace ks {
 
-Machine::Machine():
-    shape(100.f) {
-    shape.setFillColor(sf::Color::Green);
-}
-
 void Machine::process(const sf::Event& event) {
+    menu.process(event);
 }
 
 void Machine::drawOn(sf::RenderWindow& window) const {
-    window.draw(shape);
+    menu.drawOn(window);
 }
 
 } // namespaxe ks
