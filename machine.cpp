@@ -2,16 +2,22 @@
 
 namespace ks {
 
-Machine::Machine():
-    shape(100.f) {
-    shape.setFillColor(sf::Color::Green);
-}
-
-void Machine::process(const sf::Event& event) {
+Machine::Transition Machine::process(const sf::Event& event) {
+    switch (menu.process(event)) {
+    case MenuState::Transition::Stay:
+        // Do nothig;
+        break;
+    case MenuState::Transition::ToGame:
+        // Switch to game, not implemented yet
+        break;
+    case MenuState::Transition::Exit:
+        return Transition::Exit;
+    }
+    return Transition::Stay;
 }
 
 void Machine::drawOn(sf::RenderWindow& window) const {
-    window.draw(shape);
+    menu.drawOn(window);
 }
 
 } // namespaxe ks
