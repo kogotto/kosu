@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "menustate.hpp"
+#include "gamestate.hpp"
 
 
 namespace ks {
@@ -23,6 +24,12 @@ public:
     void drawOn(sf::RenderWindow& window) const;
 private:
     MenuState menu;
+    GameState game;
+
+    enum class state {
+        menu,
+        game
+    } currentState = state::menu;
 };
 
 

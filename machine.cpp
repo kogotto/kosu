@@ -1,23 +1,49 @@
 #include "machine.hpp"
+#include <cassert>
 
 namespace ks {
 
 Machine::Transition Machine::process(const sf::Event& event) {
-    switch (menu.process(event)) {
-    case MenuState::Transition::Stay:
-        // Do nothig;
-        break;
-    case MenuState::Transition::ToGame:
-        // Switch to game, not implemented yet
-        break;
-    case MenuState::Transition::Exit:
-        return Transition::Exit;
+    switch (currentState) {
+    case state::menu:
+        switch (menu.process(event)) {
+        case MenuState::Transition::Stay:
+            return Transition::Stay;
+        case MenuState::Transition::ToGame:
+            currentState = state::game;
+            return Transition::Stay;
+        case MenuState::Transition::Exit:
+            return Transition::Exit;
+        default:
+            assert(false && "unknown MenuState::Transition");
+        }
+    case state::game:
+        switch (game.process(event)) {
+        case GameState::Transition::Stay:
+            return Transition::Stay;
+        case GameState::Transition::ToMenu:
+            currentState = state::menu;
+            return Transition::Stay;
+        default:
+            assert(false && "unknown GameState::Transition");
+        }
+    default:
+        assert(false && "unknown state");
     }
-    return Transition::Stay;
+
 }
 
 void Machine::drawOn(sf::RenderWindow& window) const {
-    menu.drawOn(window);
+    switch (currentState) {
+        case state::menu:
+            menu.drawOn(window);
+            break;
+        case state::game:
+            game.drawOn(window);
+            break;
+        default:
+            assert(false && "unknown state");
+    }
 }
 
 } // namespaxe ks
