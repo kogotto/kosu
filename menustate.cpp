@@ -12,14 +12,9 @@ MenuState::Transition MenuState::process(const sf::Event& event) {
     if (event.type == sf::Event::Closed) {
         return Transition::Exit;
     }
-    if (event.type == sf::Event::KeyReleased &&
-        event.key.code == sf::Keyboard::Escape) {
-        return Transition::Exit;
-    }
 
-    if (event.type == sf::Event::KeyReleased &&
-        event.key.code == sf::Keyboard::Enter) {
-        return Transition::ToGame;
+    if (event.type == sf::Event::KeyReleased) {
+        return processKeyRelease(event.key);
     }
 
     return Transition::Stay;
@@ -27,6 +22,17 @@ MenuState::Transition MenuState::process(const sf::Event& event) {
 
 void MenuState::drawOn(sf::RenderWindow& window) const {
     window.draw(shape);
+}
+
+MenuState::Transition MenuState::processKeyRelease(
+        const sf::Event::KeyEvent& key) {
+    if (key.code == sf::Keyboard::Escape) {
+        return Transition::Exit;
+    }
+    if (key.code == sf::Keyboard::Enter) {
+        return Transition::ToGame;
+    }
+    return Transition::Stay;
 }
 
 }

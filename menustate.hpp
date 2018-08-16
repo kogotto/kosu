@@ -21,6 +21,8 @@ public:
     Transition process(const sf::Event& event);
     void drawOn(sf::RenderWindow& window) const;
 private:
+    Transition processKeyRelease(const sf::Event::KeyEvent& key);
+
     sf::CircleShape shape;
 };
 
