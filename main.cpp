@@ -4,6 +4,8 @@
 
 int main()
 {
+    sf::sleep(sf::milliseconds(100));
+
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
 
     ks::Machine machine;
