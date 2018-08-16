@@ -4,6 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "menudetail.hpp"
 
 namespace ks {
 
@@ -24,6 +25,8 @@ private:
     Transition processKeyRelease(const sf::Event::KeyEvent& key);
 
     sf::CircleShape shape;
+    using Item = menu_detail::Item;
+    Item currentItem = Item::NewGame;
 };
 
 

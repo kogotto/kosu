@@ -1,7 +1,23 @@
 #include "menustate.hpp"
 
+#include <cassert>
 
 namespace ks {
+
+namespace {
+
+MenuState::Transition toTransition(menu_detail::Item item) {
+    switch (item) {
+    case menu_detail::Item::NewGame:
+        return MenuState::Transition::ToGame;
+    case menu_detail::Item::Exit:
+        return MenuState::Transition::Exit;
+    default:
+        assert(false && "unknown menu item");
+    }
+}
+
+} // namespace
 
 MenuState::MenuState():
     shape(100.f) {
@@ -26,12 +42,21 @@ void MenuState::drawOn(sf::RenderWindow& window) const {
 
 MenuState::Transition MenuState::processKeyRelease(
         const sf::Event::KeyEvent& key) {
-    if (key.code == sf::Keyboard::Escape) {
-        return Transition::Exit;
-    }
     if (key.code == sf::Keyboard::Enter) {
-        return Transition::ToGame;
+        return toTransition(currentItem);
     }
+
+    if (key.code == sf::Keyboard::Up) {
+        currentItem = prev(currentItem);
+    }
+
+    if (key.code == sf::Keyboard::Down) {
+        currentItem = next(currentItem);
+    }
+    shape.setFillColor(currentItem == Item::NewGame?
+            sf::Color::Green:
+            sf::Color::Red);
+
     return Transition::Stay;
 }
 
