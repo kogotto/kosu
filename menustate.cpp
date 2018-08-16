@@ -21,10 +21,10 @@ MenuState::Transition MenuState::process(const sf::Event& event) {
         event.key.code == sf::Keyboard::Enter) {
 
         /// some noticeable behavior
-        static int i = 0;
-        ++i;
-        if (i > 5)
-            shape.setFillColor(sf::Color::Red);
+        /* static int i = 0; */
+        /* ++i; */
+        /* if (i > 5) */
+            /* shape.setFillColor(sf::Color::Red); */
         /// only for test
 
         return Transition::ToGame;
