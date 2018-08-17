@@ -14,7 +14,7 @@ namespace models_detail {
 
 using Row = std::array<Cell, 9>;
 
-}
+} // namespace
 
 using Board = std::array<models_detail::Row, 9>;
 
