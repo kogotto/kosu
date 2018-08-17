@@ -4,7 +4,7 @@ project(kosu)
 
 add_compile_options(-std=c++17)
 
-file(GLOB KOSU_SOURCES "*.cpp")
+file(GLOB_RECURSE KOSU_SOURCES "*.cpp")
 
 add_executable(kosu ${KOSU_SOURCES})
 
