@@ -11,8 +11,12 @@ inline constexpr char toChar(Cell::Model::Value value) noexcept {
 
 } // namespace
 
-Cell::Cell(const Cell::Position& position, const sf::Font& font):
+Cell::Cell(
+        const Cell::Position& position,
+        const Cell::Size& size,
+        const sf::Font& font):
     position_(position),
+    size_(size),
     font_(font) {}
 
 void Cell::drawOn(
