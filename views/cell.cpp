@@ -12,8 +12,8 @@ inline constexpr char toChar(Cell::Model::Value value) noexcept {
 } // namespace
 
 Cell::Cell(
-        const Cell::Position& position,
-        const Cell::Size& size,
+        const Position& position,
+        const Size& size,
         const sf::Font& font):
     position_(position),
     size_(size),

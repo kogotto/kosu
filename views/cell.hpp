@@ -3,6 +3,7 @@
 
 
 #include <SFML/Graphics.hpp>
+#include "views/common.hpp"
 #include "models/cell.hpp"
 
 
@@ -12,8 +13,6 @@ namespace views {
 
 class Cell {
 public:
-    using Position = sf::Vector2i;
-    using Size = sf::Vector2i;
     using Model = ks::models::Cell;
     Cell(const Position& position,
             const Size& size,

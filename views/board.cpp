@@ -5,8 +5,8 @@ namespace views {
 
 namespace {
 
-inline Board::Size getCellSize(
-        const Board::Size& size,
+inline Size getCellSize(
+        const Size& size,
         size_t rows,
         size_t cols) {
     return {
@@ -15,11 +15,11 @@ inline Board::Size getCellSize(
     };
 }
 
-inline Board::Position getCellPosition(
-        const Board::Position& origin,
+inline Position getCellPosition(
+        const Position& origin,
         size_t row,
         size_t col,
-        const Board::Size& cellSize) {
+        const Size& cellSize) {
     return {
         origin.x + row * cellSize.x,
         origin.y + col * cellSize.y
@@ -27,8 +27,8 @@ inline Board::Position getCellPosition(
 }
 
 Board::Cells createCells(
-        const Board::Position& position,
-        const Board::Size& size,
+        const Position& position,
+        const Size& size,
         const sf::Font& font) {
     constexpr auto rows = Board::Model().size();
     constexpr auto cols = Board::Model()[0].size();
@@ -54,8 +54,8 @@ Board::Cells createCells(
 }
 
 Board::Board(
-        const Board::Position& position,
-        const Board::Size& size,
+        const Position& position,
+        const Size& size,
         const sf::Font& font):
     position_(position),
     size_(size),

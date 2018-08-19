@@ -4,6 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "models/board.hpp"
+#include "views/common.hpp"
 #include "views/cell.hpp"
 
 
@@ -13,8 +14,6 @@ namespace views {
 
 class Board {
 public:
-    using Position = sf::Vector2i;
-    using Size = sf::Vector2i;
     using Model = ks::models::Board;
     using Cells = std::vector<std::vector<Cell>>;
 
