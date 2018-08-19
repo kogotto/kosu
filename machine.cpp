@@ -3,6 +3,9 @@
 
 namespace ks {
 
+Machine::Machine(const sf::Font& font):
+    game(font) {}
+
 Machine::Transition Machine::process(const sf::Event& event) {
     switch (currentState) {
     case state::menu:
@@ -10,6 +13,7 @@ Machine::Transition Machine::process(const sf::Event& event) {
         case MenuState::Transition::Stay:
             return Transition::Stay;
         case MenuState::Transition::ToGame:
+            game.startNewGame();
             currentState = state::game;
             return Transition::Stay;
         case MenuState::Transition::Exit:

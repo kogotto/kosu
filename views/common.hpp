@@ -6,8 +6,8 @@ namespace ks {
 namespace views {
 
 
-using Position = sf::Vector2i;
-using Size = sf::Vector2i;
+using Position = sf::Vector2f;
+using Size = sf::Vector2f;
 
 
 } // namespace views

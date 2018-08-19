@@ -31,10 +31,13 @@ void Cell::drawOn(
 }
 
 sf::Text Cell::getText(Cell::Model::Value value) const {
-    return {
+    sf::Text text {
         toChar(value),
         font_
     };
+    text.setFillColor(sf::Color::White);
+    text.setPosition(position_);
+    return text;
 }
 
 } // namespace views
