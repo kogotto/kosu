@@ -68,6 +68,11 @@ void Board::drawOn(sf::RenderWindow& window,
 }
 
 void Board::drawTable(sf::RenderWindow& window) const {
+    sf::RectangleShape substrate(size_);
+    substrate.setPosition(position_);
+    substrate.setFillColor(sf::Color::Blue);
+
+    window.draw(substrate);
 }
 
 void Board::drawCells(
