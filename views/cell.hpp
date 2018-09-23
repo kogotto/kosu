@@ -22,7 +22,7 @@ public:
             sf::RenderWindow& window,
             const Model& cell) const;
 private:
-    sf::Text getText(Model::Value value) const;
+    sf::Text getText(const Model& model) const;
 
     Position position_;
     Size size_;

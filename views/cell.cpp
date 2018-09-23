@@ -26,17 +26,21 @@ void Cell::drawOn(
         return;
     }
 
-    const auto text = getText(*cell.value_);
+    const auto text = getText(cell);
     window.draw(text);
 }
 
-sf::Text Cell::getText(Cell::Model::Value value) const {
+sf::Text Cell::getText(const Cell::Model& model) const {
     sf::Text text {
-        toChar(value),
-        font_
+        toChar(*model.value_),
+        font_,
+        20
     };
     text.setFillColor(sf::Color::White);
     text.setPosition(position_);
+    if (model.given_) {
+        text.setStyle(sf::Text::Bold);
+    }
     return text;
 }
 
