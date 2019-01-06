@@ -18,7 +18,7 @@ public:
         Exit
     };
 
-    Machine() = default;
+    Machine(const sf::Font& font);
 
     Transition process(const sf::Event& event);
     void drawOn(sf::RenderWindow& window) const;

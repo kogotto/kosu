@@ -2,7 +2,10 @@
 #define GAME_STATE_HPP
 
 
+#include <optional>
 #include <SFML/Graphics.hpp>
+#include "models/board.hpp"
+#include "views/board.hpp"
 
 
 namespace ks {
@@ -15,12 +18,15 @@ public:
         ToMenu
     };
 
-    GameState();
+    GameState(const sf::Font& font);
+
+    void startNewGame();
 
     Transition process(const sf::Event& event);
     void drawOn(sf::RenderWindow & window) const;
 private:
-    sf::RectangleShape shape;
+    views::Board boardView_;
+    std::optional<models::Board> boardModel_;
 };
 
 

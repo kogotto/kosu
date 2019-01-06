@@ -8,7 +8,12 @@ int main()
 
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
 
-    ks::Machine machine;
+    sf::Font font;
+    if (!font.loadFromFile("arial.ttf")) {
+        return 666;
+    }
+
+    ks::Machine machine(font);
 
     while (window.isOpen())
     {
